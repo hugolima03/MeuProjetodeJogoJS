@@ -3,7 +3,7 @@ class Personagem extends Animacao{
         super(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite);
 
         this.velocidadeDoPulo = 0;
-        this.gravidade = 2;
+        this.gravidade = 5;
         this.yInicial = height - this.altura;
         this.y = this.yInicial-30;
     }
@@ -27,7 +27,7 @@ class Personagem extends Animacao{
         //    inimigo.y,  
         //    inimigo.largura,
         //    inimigo.altura)
-        const precisao = 0.7;
+        const precisao = 0.75;
         const colisao = collideRectRect(
             this.x,
             this.y,
