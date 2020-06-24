@@ -51,9 +51,12 @@ function setup(){
     inimigo = new Inimigo(matrizDjinn, inimigoImagem,width - 300, 96, 96, 31, 64)
 }
 function keyPressed(){
-    if(key === 'ArrowUp'){
-        personagem.pula()
+    if(key === 'ArrowUp' || 'Space' || 'MouseClick'){
+        personagem.pula();
     }
+}
+function mouseClicked(){
+    return personagem.pula();
 }
 
 function draw(){
