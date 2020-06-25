@@ -1,5 +1,7 @@
 let cenario, cenario2, cenario3, cenario4, cenario5, cenario6;
 let cenarioImagem, cenarioImagem2, cenarioImagem3, cenarioImagem4, cenarioImagem5, cenarioImagem6;
+let gameoverImagem;
+let gameoverSong;
 
 let personagem;
 let personagemImagem;
@@ -19,8 +21,32 @@ let matrizDjinn = [
     [96,0],
 ];
 
+let semCabeca;
+let semCabecaImagem;
+let matrizsemCabeca = [
+    [0,0],
+    [32,0],
+    [64,0],
+    [96,0],
+    [128,0],
+    [160,0]
+]
+
+let morcego;
+let morcegoImagem;
+let matrizMorcego = [
+    [0,0],
+    [33,0],
+    [66,0],
+]
+
+let matrizGameover = [
+    [0,0]
+]
+
 let SomDoPulo;
 let SomJogo;
+let gameover;
 
 function preload(){
     //carregando as imagens do cenário e aplicando a classe Cenario nas variaveis
@@ -32,8 +58,12 @@ function preload(){
     cenarioImagem6 = loadImage('assets/imagens/cenario/06.png');
     personagemImagem = loadImage('assets/imagens/personagem/lobo2.png');
     inimigoImagem = loadImage('assets/imagens/inimigos/djinn.png');
-    SomDoPulo = loadSound('assets/sons/somPulo.mp3')
-    SomJogo = loadSound('assets/sons/minhatrilha_jogo.mp3')
+    semCabecaImagem = loadImage('assets/imagens/inimigos/semcabeca.png');
+    morcegoImagem = loadImage('assets/imagens/inimigos/morcego.png');
+    gameoverImagem = loadImage('assets/imagens/gameover/gameover.png');
+    SomDoPulo = loadSound('assets/sons/somPulo.mp3');
+    SomJogo = loadSound('assets/sons/minhatrilha_jogo.mp3');
+    gameoverSong = loadSound('assets/sons/GameOver.ogg');
 }
 
 function setup(){
@@ -47,11 +77,15 @@ function setup(){
     cenario5 = new Cenario(cenarioImagem5, 8);
     cenario6 = new Cenario(cenarioImagem6, 5);
     SomJogo.loop();
-    personagem = new Personagem(matrizlobo, personagemImagem, 100, 132, 64, 64, 64)
-    inimigo = new Inimigo(matrizDjinn, inimigoImagem,width - 300, 96, 96, 31, 64)
+    //constructor(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite)
+    personagem = new Personagem(matrizlobo, personagemImagem, 100, 30, 132, 64, 64, 64);
+    inimigo = new Inimigo(matrizDjinn, inimigoImagem,width - 300, 96, 30, 96, 96, 32, 10, 100);
+    semCabeca = new Inimigo(matrizsemCabeca, semCabecaImagem, width+ 600, 96,30,90,100,32, 20, 2500);
+    morcego = new Inimigo(matrizMorcego, morcegoImagem, width-300, 500, 78, 72, 72, 26, 15, 3000);
+    gameover = new Gameover();
 }
 function keyPressed(){
-    if(key === 'ArrowUp' || 'Space' || 'MouseClick'){
+    if(key === 'ArrowUp' || 'Space'){
         personagem.pula();
     }
 }
@@ -74,6 +108,12 @@ function draw(){
 
     inimigo.exibe();
     inimigo.move();
+
+    semCabeca.exibe();
+    semCabeca.move();
+
+    morcego.exibe();
+    morcego.move();
     
     personagem.exibe();
     personagem.aplicaGravidade();
@@ -84,7 +124,19 @@ function draw(){
     if (personagem.colidiu(inimigo)){
         console.log('colidiu');
         SomJogo.stop();
+        gameoverSong.play();
         noLoop();
     }
-
+    if (personagem.colidiu(semCabeca)){
+        console.log('colidiu');
+        SomJogo.stop();
+        gameoverSong.play();
+        noLoop();
+    }
+    if (personagem.colidiu(morcego)){
+        console.log('colidiu');
+        SomJogo.stop();
+        gameoverSong.play();
+        noLoop();
+    }
 }
