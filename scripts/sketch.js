@@ -2,6 +2,7 @@ let cenario, cenario2, cenario3, cenario4, cenario5, cenario6;
 let cenarioImagem, cenarioImagem2, cenarioImagem3, cenarioImagem4, cenarioImagem5, cenarioImagem6;
 let gameoverImagem;
 let gameoverSong;
+let pontuacao;
 
 let personagem;
 let personagemImagem;
@@ -69,6 +70,8 @@ function preload(){
 function setup(){
     frameRate(20)
     createCanvas(windowWidth, windowHeight-4)
+
+    pontuacao = new Pontuacao();
     
     cenario = new Cenario(cenarioImagem, 0.1);
     cenario2 = new Cenario(cenarioImagem2, 0.4);
@@ -94,7 +97,7 @@ function mouseClicked(){
 }
 
 function draw(){
-    //exibindo e aplicando movimento ao fundo
+    //exibindo e aplicando movimento ao fundo.
     cenario.exibe();
     cenario.move();
     cenario2.exibe();
@@ -105,6 +108,9 @@ function draw(){
     cenario4.move();
     cenario5.exibe();
     cenario5.move();
+    //chamando os métodos de pontuação.
+    pontuacao.exibe();
+    pontuacao.adicionarPonto();
 
     inimigo.exibe();
     inimigo.move();
@@ -122,18 +128,21 @@ function draw(){
     cenario6.move();
 
     if (personagem.colidiu(inimigo)){
+        image(gameoverImagem, width/2 - 550, height/2 - 550);
         console.log('colidiu');
         SomJogo.stop();
         gameoverSong.play();
         noLoop();
     }
     if (personagem.colidiu(semCabeca)){
+        image(gameoverImagem, width/2 - 550, height/2 - 550);
         console.log('colidiu');
         SomJogo.stop();
         gameoverSong.play();
         noLoop();
     }
     if (personagem.colidiu(morcego)){
+        image(gameoverImagem, width/2 - 550, height/2 - 550);
         console.log('colidiu');
         SomJogo.stop();
         gameoverSong.play();

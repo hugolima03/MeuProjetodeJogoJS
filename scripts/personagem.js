@@ -4,14 +4,18 @@ class Personagem extends Animacao{
 
         this._variacaoY = _variacaoY;
         this.velocidadeDoPulo = 0;
-        this.gravidade = 5;
+        this.gravidade = 9;
         this.yInicial = height - this.altura;
         this.y = this.yInicial-30;
+        this.pulos = 0;
     }
 
     pula(){
-        this.velocidadeDoPulo = -40
-        SomDoPulo.play();
+        if(this.pulos <2){
+            this.velocidadeDoPulo = -60
+            SomDoPulo.play();
+            this.pulos++
+        }
     }
     aplicaGravidade(){
         this.y = this.y + this.velocidadeDoPulo;
@@ -19,6 +23,7 @@ class Personagem extends Animacao{
 
         if (this.y > this.yInicial-30){
             this.y = this.yInicial-30
+            this.pulos = 0;
         }
     }
     colidiu(inimigo) {
