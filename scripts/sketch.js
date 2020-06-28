@@ -1,10 +1,10 @@
 function setup(){
     jogo = new Jogo()
+    telaInicialSom.loop();
     telaInicial = new TelaInicial();
     jogo.setup();
-    frameRate(20)
+    frameRate(60)
     createCanvas(windowWidth, windowHeight-4)
-    SomJogo.loop();
     cenas = {
             jogo : jogo,
             telaInicial : telaInicial

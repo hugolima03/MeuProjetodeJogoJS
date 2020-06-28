@@ -13,6 +13,9 @@ class Botao{
 
     }
     alteraCena(){
+        frameRate(20)
+        telaInicialSom.stop();
+        SomJogo.loop();
         this.botao.remove();
         cenaAtual = 'jogo'
     }

@@ -3,10 +3,23 @@ class Jogo {
         
     }
     setup(){
+    
 
     createCanvas(windowWidth, windowHeight-4)
 
     pontuacao = new Pontuacao();
+
+    telaInicialio1 = new Cenario(telaInicial1img, 3);
+    telaInicialio2 = new Cenario(telaInicial2img, 3);
+    telaInicialio3 = new Cenario(telaInicial3img, 2);
+    telaInicialio4 = new Cenario(telaInicial4img, 2);
+    telaInicialio5 = new Cenario(telaInicial5img, 1);
+    telaInicialio6 = new Cenario(telaInicial6img, 1);
+    telaInicialio7 = new Cenario(telaInicial7img, 0.8);
+    telaInicialio8 = new Cenario(telaInicial8img, 0.8);
+    telaInicialio9 = new Cenario(telaInicial9img, 0.5);
+    telaInicialio10 = new Cenario(telaInicial10img, 0.8);
+    telaInicialio11 = new Cenario(telaInicial11img, 3);
     
     cenario = new Cenario(cenarioImagem, 0.1);
     cenario2 = new Cenario(cenarioImagem2, 0.4);
@@ -14,7 +27,6 @@ class Jogo {
     cenario4 = new Cenario(cenarioImagem4, 1.4);
     cenario5 = new Cenario(cenarioImagem5, 8);
     cenario6 = new Cenario(cenarioImagem6, 5);
-    SomJogo.loop();
     //constructor(matriz, imagem, x, variacaoY, largura, altura, larguraSprite, alturaSprite)
     personagem = new Personagem(matrizlobo, personagemImagem, 100, 30, 132, 64, 64, 64);
     inimigo = new Inimigo(matrizDjinn, inimigoImagem,width - 300, 96, 30, 96, 96, 32, 10, 100);

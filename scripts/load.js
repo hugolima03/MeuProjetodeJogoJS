@@ -1,7 +1,22 @@
 function preload(){
 
-    imagemTelaInicial = loadImage('assets/imagens/telainicial/background11.png');
+    //carregando assets da tela inicial
+    telaInicial1img = loadImage('assets/imagens/telainicial/1.png');
+    telaInicial2img = loadImage('assets/imagens/telainicial/2.png');
+    telaInicial3img = loadImage('assets/imagens/telainicial/3.png');
+    telaInicial4img = loadImage('assets/imagens/telainicial/4.png');
+    telaInicial5img = loadImage('assets/imagens/telainicial/5.png');
+    telaInicial6img = loadImage('assets/imagens/telainicial/6.png');
+    telaInicial7img = loadImage('assets/imagens/telainicial/7.png');
+    telaInicial8img = loadImage('assets/imagens/telainicial/8.png');
+    telaInicial9img = loadImage('assets/imagens/telainicial/9.png');
+    telaInicial10img = loadImage('assets/imagens/telainicial/10.png');
+    telaInicial11img = loadImage('assets/imagens/telainicial/11.png');
+
+
+    imagemTelaInicial = loadImage('assets/imagens/telainicial/oconto1.png');
     fonteTelaInicial = loadFont('assets/imagens/telainicial/korean.otf')
+    telaInicialSom = loadSound('assets/imagens/telainicial/telainicialsong.mp4')
     //carregando as imagens do cenário e aplicando a classe Cenario nas variaveis
     cenarioImagem = loadImage('assets/imagens/cenario/01.png');
     cenarioImagem2 = loadImage('assets/imagens/cenario/02.png');
