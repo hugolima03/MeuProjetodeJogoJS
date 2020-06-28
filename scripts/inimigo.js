@@ -10,6 +10,10 @@ class Inimigo extends Animacao {
 
         if (this.x < -this.largura - this.delay){
             this.x = width;
+            this.velocidade = this.velocidade + random(10,30);
+            if (this.velocidade>32){
+                this.velocidade = this.velocidade - random (15,25);
+            }
         }
     }
 }
