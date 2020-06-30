@@ -11,6 +11,9 @@ class Pontuacao {
     adicionarPonto(){
         this.pontos += 0.2;
     }
+    removerPonto(){
+        this.pontos -= 30;
+    }
     passouInimigo(){
         this.pontos += 20;
     }

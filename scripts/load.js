@@ -13,6 +13,10 @@ function preload(){
     telaInicial10img = loadImage('assets/imagens/telainicial/10.png');
     telaInicial11img = loadImage('assets/imagens/telainicial/11.png');
 
+    historiaImagem = loadImage('assets/imagens/historia/historia1.png')
+    
+    _imagemVida = loadImage('assets/vida/heart pixel art 254x254.png')
+    damageSound = loadSound('assets/sons/damage.mp4')
 
     imagemTelaInicial = loadImage('assets/imagens/telainicial/oconto1.png');
     fonteTelaInicial = loadFont('assets/imagens/telainicial/korean.otf')

@@ -3,8 +3,7 @@ class Jogo {
         
     }
     setup(){
-    
-
+    vida = new Vida(3, 3);
     createCanvas(windowWidth, windowHeight-4)
 
     pontuacao = new Pontuacao();
@@ -33,6 +32,9 @@ class Jogo {
     semCabeca = new Inimigo(matrizsemCabeca, semCabecaImagem, width+ 600, 96,30,90,100,32, 20, 2500);
     morcego = new Inimigo(matrizMorcego, morcegoImagem, width-300, 500, 78, 72, 72, 26, 15, 3000);
     gameover = new Gameover();
+    }
+    mouseClicked(){
+        return personagem.pula();
     }
     keyPressed(key){
         if(key === 'ArrowUp' || 'Space'){
@@ -70,26 +72,55 @@ class Jogo {
     cenario6.exibe();
     cenario6.move();
 
+    vida.draw();
+
+
     if (personagem.colidiu(inimigo)){
-        image(gameoverImagem, width/2 - 550, height/2 - 550);
+        vida.perdeVida();
+        pontuacao.removerPonto();
+        personagem.ficaInvencivel();
+        damageSound.play();
+        //image(gameoverImagem, width/2 - 550, height/2 - 550);
         console.log('colidiu');
-        SomJogo.stop();
-        gameoverSong.play();
-        noLoop();
+        //gameoverSong.play();
+        //noLoop();
+        if(vida.vidas === 0 ){
+            gameoverSong.play();
+            SomJogo.stop();
+            image(gameoverImagem, width/2 - 550, height/2 - 550);
+            noLoop();  
+        }
     }
     if (personagem.colidiu(semCabeca)){
-        image(gameoverImagem, width/2 - 550, height/2 - 550);
+        vida.perdeVida();
+        pontuacao.removerPonto();
+        personagem.ficaInvencivel();
+        damageSound.play();
         console.log('colidiu');
-        SomJogo.stop();
-        gameoverSong.play();
-        noLoop();
+        //gameoverSong.play();
+        //noLoop();
+        if(vida.vidas === 0 ){
+            SomJogo.stop();
+            image(gameoverImagem, width/2 - 550, height/2 - 550);
+            gameoverSong.play();
+            noLoop();  
+        }
     }
     if (personagem.colidiu(morcego)){
-        image(gameoverImagem, width/2 - 550, height/2 - 550);
+        vida.perdeVida();
+        pontuacao.removerPonto();
+        damageSound.play();
+        personagem.ficaInvencivel();
+        //image(gameoverImagem, width/2 - 550, height/2 - 550);
         console.log('colidiu');
-        SomJogo.stop();
-        gameoverSong.play();
-        noLoop();
+        //gameoverSong.play();
+        //noLoop();
+        if(vida.vidas === 0 ){
+            SomJogo.stop();
+            gameoverSong.play();
+            image(gameoverImagem, width/2 - 550, height/2 - 550);
+            noLoop(); 
+        }
     }
     }
 }

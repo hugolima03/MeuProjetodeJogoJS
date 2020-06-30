@@ -6,6 +6,7 @@ class Botao{
         this.botao = createButton(this.text);
         this.botao.mousePressed( () => this.alteraCena());
         this.botao.addClass('botao-tela-inicial');
+
     }
     draw(){
         this.botao.position(this.posicaoX, this.posicaoY);
@@ -14,9 +15,15 @@ class Botao{
     }
     alteraCena(){
         frameRate(20)
-        telaInicialSom.stop();
-        SomJogo.loop();
+        //telaInicialSom.stop();
+        //SomJogo.loop();
         this.botao.remove();
-        cenaAtual = 'jogo'
+        cenaAtual = 'historia'
+        setTimeout(function(){
+            SomJogo.loop();
+            //telaInicialSom.stop();
+            //cenaAtual = 'jogo';
+            //your code to be executed after 1 seconds
+    },pera);
     }
 }

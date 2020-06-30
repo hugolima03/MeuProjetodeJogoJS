@@ -1,5 +1,6 @@
 function setup(){
     jogo = new Jogo()
+    historia = new Historia
     telaInicialSom.loop();
     telaInicial = new TelaInicial();
     jogo.setup();
@@ -7,16 +8,15 @@ function setup(){
     createCanvas(windowWidth, windowHeight-4)
     cenas = {
             jogo : jogo,
+            historia : historia,
             telaInicial : telaInicial
         }
     botao = new Botao('INICIAR', width/2, height/2);
     };
+    //botaohist1 = new Botao('Iniciar', 500, 500);
 function keyPressed(){
     jogo.keyPressed(key);
     }
-function mouseClicked(){
-    return personagem.pula();
-}
 function draw(){
     cenas[cenaAtual].draw();
 }
